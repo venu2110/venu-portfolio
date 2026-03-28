@@ -1,17 +1,19 @@
 import { motion } from "framer-motion"
-import { FaJs, FaJava, FaHtml5, FaCss3Alt, FaDocker, FaGitAlt } from "react-icons/fa"
-import { SiCplusplus, SiMysql, SiAmazon, SiKubernetes, SiTerraform } from "react-icons/si"
+import { FaJs, FaHtml5, FaCss3Alt, FaDocker, FaGitAlt, FaPython, FaReact, FaNodeJs } from "react-icons/fa"
+import { SiCplusplus, SiMysql, SiAmazon, SiKubernetes, SiMongodb } from "react-icons/si"
 
 const skills = [
   { name: "C/C++", icon: <SiCplusplus size={50} /> },
-  { name: "Java", icon: <FaJava size={50} /> },
+  { name: "Python", icon: <FaPython size={50} /> },
   { name: "JavaScript", icon: <FaJs size={50} /> },
+  { name: "ReactJS", icon: <FaReact size={50} /> },
+  { name: "NodeJS", icon: <FaNodeJs size={50} /> },
+  { name: "MongoDB", icon: <SiMongodb size={50} /> },
   { name: "HTML/CSS", icon: <FaHtml5 size={50} /> },
   { name: "MySQL", icon: <SiMysql size={50} /> },
   { name: "AWS", icon: <SiAmazon size={50} /> },
   { name: "Docker", icon: <FaDocker size={50} /> },
   { name: "Kubernetes", icon: <SiKubernetes size={50} /> },
-  { name: "Terraform", icon: <SiTerraform size={50} /> },
   { name: "Git", icon: <FaGitAlt size={50} /> },
 ]
 
