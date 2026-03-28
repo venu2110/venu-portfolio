@@ -118,4 +118,3 @@ MIT License - feel free to use this template for your own portfolio!
 ---
 
 ⭐ Star this repo if you found it helpful!
->>>>>>> eeef1be (Initial commit for Venu's Portfolio)

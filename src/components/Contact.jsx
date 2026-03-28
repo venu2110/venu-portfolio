@@ -18,16 +18,46 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
   const anim = (props) => ({ initial: { opacity: 0, ...props }, animate: isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0 }, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } })
 
+  // Fallback in case Vercel/env vars are missing
+  const FORM_ENDPOINT = import.meta.env.VITE_FORM_ENDPOINT || 'https://formspree.io/f/mvzwkkjd'
+
   return (
     <motion.div ref={ref} {...anim({})} className='lg:my-16 lg:px-28 my-8 px-5' id='contact'>
       <motion.h2 {...anim({ y: -50 })} className='text-2xl lg:text-3xl text-center font-light'>Contact <span className='font-medium'>Me</span></motion.h2>
       <div className='flex justify-between items-center mt-8 lg:mt-16 flex-col lg:flex-row'>
         <motion.div {...anim({ x: -50 })} className='lg:w-[40%]'>
-          <form className='w-full space-y-3 lg:space-y-5'>
-            <input className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light' type="text" placeholder='Your name' required />
-            <input className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light' type="email" placeholder='Email' required />
-            <input className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light' type="text" placeholder='Your website (If exists)' />
-            <textarea className='resize-none border px-5 py-3 h-32 border-black placeholder:text-[#71717A] rounded text-sm w-full font-light' placeholder='How can I help?*' />
+          <form
+            className='w-full space-y-3 lg:space-y-5'
+            action={import.meta.env.VITE_FORM_ENDPOINT}
+            method='POST'
+          >
+            <input
+              className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light'
+              type='text'
+              name='name'
+              placeholder='Your name'
+              required
+            />
+            <input
+              className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light'
+              type='email'
+              name='email'
+              placeholder='Email'
+              required
+            />
+            <input
+              className='border px-5 py-3 border-black rounded placeholder:text-[#71717A] text-sm w-full font-light'
+              type='text'
+              name='website'
+              placeholder='Your website (If exists)'
+            />
+            <textarea
+              className='resize-none border px-5 py-3 h-32 border-black placeholder:text-[#71717A] rounded text-sm w-full font-light'
+              name='message'
+              placeholder='How can I help?*'
+              required
+            />
+            <input type='hidden' name='_subject' value='New message from portfolio' />
             <div className='flex justify-between gap-3 lg:gap-5 flex-col lg:flex-row'>
               <motion.button whileHover={{ scale: 1.05 }} type='submit' className='bg-black justify-center w-fit lg:w-auto lg:flex-1 hover:shadow-lg text-white px-3 py-2 rounded flex items-center gap-x-3 font-normal'>Get In Touch</motion.button>
               <div className='flex items-center gap-x-2 lg:gap-x-5'>
